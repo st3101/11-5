@@ -19,18 +19,17 @@
 int main(void) {
 	setbuf(stdout,NULL);
 
-	int opcion;
-	int salir=0;
-	int indice;
-
 	int flagError;
 
 	Producto* arrayProducto[CAN_PRODUCTOS];
 
+	arrayProducto[0]=pro_newParam(0, "TELA", 0, 0);
+
+	printf("%-15s%-15s%-15s%-15s\n","ID PRODUCTO","DESCRIPCION","ID NACIONALIDAD","ID TIPO");
+	printf("%-15d%-15s%-15d%-15d",pro_getId(arrayProducto[0],&flagError),pro_getDescripcion(arrayProducto[0], &flagError),pro_getIdNacionalidad(arrayProducto[0], &flagError),pro_getIdTipo(arrayProducto[0], &flagError));
 
 
-/*
-
+	/*
 	arrayClientes[0]=cli_newParam("Santiago", "Leonardi", "42640255", 0);
 	arrayClientes[1]=cli_newParam("PAPA", "CACA", "42000000", 1);
 

@@ -19,14 +19,21 @@ typedef struct
 }Producto;
 
 
-Producto* cli_new(void);
+Producto* pro_new(void);
+Producto* pro_newParam(int idProducto,char* descripcion,int idNacionalidad,int idTipo);
+int pro_delete(Producto* this);
 
 int pro_setId(Producto* this,int idProducto);
 int pro_getId(Producto* this,int* flagError);
-/*
-Producto* cli_newParam(char* nombre,char* apellid,char* dni,int idEmpleado);
-int cli_delete(Producto* this);
+int pro_setDescripcion(Producto* this,char* descripcion);
+char* pro_getDescripcion(Producto* this,int* flagError);
+int pro_setIdNacionalidad(Producto* this,int idNacionalidad);
+int pro_getIdNacionalidad(Producto* this,int* flagError);
+int pro_setIdTipo(Producto* this,int idTipo);
+int pro_getIdTipo(Producto* this,int* flagError);
 
+
+/*
 int cli_setNombre(Producto* this,char* nombre);
 char* cli_getNombre(Producto* this,int* flagError);
 

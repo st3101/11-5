@@ -18,23 +18,23 @@ Producto* pro_new(void)
 	return (Producto*)malloc(sizeof(Producto));
 }
 
-Producto* pro_newParam(char* nombre,char* apellido,char* dni,int idEmpleado)
+Producto* pro_newParam(int idProducto,char* descripcion,int idNacionalidad,int idTipo)
 {
-	Producto* pCliente = cli_new();
+	Producto* pProducto = pro_new();
 
-	if(pCliente != NULL)
+	if(pProducto != NULL)
 	{
-		if(pro_set)
+		if(pro_setId(pProducto, idProducto) || pro_setDescripcion(pProducto, descripcion) || pro_setIdNacionalidad(pProducto, idNacionalidad) || pro_setIdTipo(pProducto, idTipo))
 		{
-				pro_delete(pCliente);
-				pCliente = NULL;
+
+				pro_delete(pProducto);
+				pProducto = NULL;
 		}
 	}
-
-	return pCliente;
+	return pProducto;
 }
 
-int cli_delete(Producto* this)
+int pro_delete(Producto* this)
 {
 	int retorno = -1;
 
@@ -46,90 +46,33 @@ int cli_delete(Producto* this)
 
 	return retorno;
 }
-/*
 
-//NOMBRE
-int cli_setNombre(Producto* this,char* nombre)
+int pro_setDescripcion(Producto* this,char* descripcion)
 {
 	int retorno =-1;
 
-	if(this != NULL && nombre != NULL && utn_validarLetra(nombre))
+	if(this != NULL && descripcion != NULL && utn_validarLetra(descripcion))
 	{
-		strcpy(this->nombre,nombre);
+		strcpy(this->descripcion,descripcion);
 		retorno = 0;
 	}
 
 	return retorno;
 }
-char* cli_getNombre(Producto* this,int* flagError)
+char* pro_getDescripcion(Producto* this,int* flagError)
 {
-	char* auxNombre=NULL;
+	char* auxDescripcion=NULL;
 	*flagError= -1;
 
 	if(this != NULL && flagError != NULL )
 	{
-		auxNombre=this->nombre;
+		auxDescripcion=this->descripcion;
 		*flagError= 0;
 	}
 
-	return auxNombre;
+	return auxDescripcion;
 }
 
-//APELLIDO
-int cli_setApellido(Producto* this,char* apellido)
-{
-	int retorno = -1;
-
-	if(this != NULL && apellido != NULL && utn_validarLetra(apellido))
-	{
-		strcpy(this->apellido,apellido);
-		retorno = 0;
-	}
-
-		return retorno;
-}
-char* cli_getApellido(Producto* this,int* flagError)
-{
-	char* auxApellido=NULL;
-	*flagError= -1;
-
-	if(this != NULL && flagError != NULL)
-	{
-		auxApellido=this->apellido;
-		*flagError= 0;
-	}
-
-	return auxApellido;
-}
-
-//DNI
-int cli_setDni(Producto* this,char* dni)
-{
-	int retorno = -1;
-
-	if(this != NULL && dni != NULL && utn_validarNumero(dni))
-	{
-		strcpy(this->dni,dni);
-		retorno = 0;
-	}
-
-		return retorno;
-}
-char* cli_getDni(Producto* this,int* flagError)
-{
-	char* auxDni=NULL;
-	*flagError= -1;
-
-	if(this != NULL && flagError != NULL)
-	{
-		auxDni=this->dni;
-		*flagError= 0;
-	}
-
-	return auxDni;
-}
-*/
-//DNI
 int pro_setId(Producto* this,int idProducto)
 {
 	int retorno = -1;
@@ -154,6 +97,59 @@ int pro_getId(Producto* this,int* flagError)
 	}
 
 	return auxId;
+}
+int pro_setIdNacionalidad(Producto* this,int idNacionalidad)
+{
+	int retorno = -1;
+
+	if(this != NULL && idNacionalidad >= 0)
+	{
+		this->idNacionalidad=idNacionalidad;
+		retorno = 0;
+	}
+
+		return retorno;
+}
+
+int pro_getIdNacionalidad(Producto* this,int* flagError)
+{
+	int auxIdNacionalidad;
+	*flagError= -1;
+
+	if(this != NULL && flagError != NULL)
+	{
+		auxIdNacionalidad=this->idNacionalidad;
+		*flagError= 0;
+	}
+
+	return auxIdNacionalidad;
+}
+
+int pro_setIdTipo(Producto* this,int idTipo)
+{
+	int retorno = -1;
+
+	if(this != NULL && idTipo >= 0)
+	{
+		this->idTipo=idTipo;
+		retorno = 0;
+	}
+
+		return retorno;
+}
+
+int pro_getIdTipo(Producto* this,int* flagError)
+{
+	int aux;
+	*flagError= -1;
+
+	if(this != NULL && flagError != NULL)
+	{
+		aux=this->idTipo;
+		*flagError= 0;
+	}
+
+	return aux;
 }
 /*
 int cli_BuscarLibre(Cliente* array,int len,int* indice)
