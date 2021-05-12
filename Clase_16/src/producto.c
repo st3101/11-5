@@ -77,7 +77,7 @@ int pro_setId(Producto* this,int idProducto)
 {
 	int retorno = -1;
 
-	if(this != NULL && idProducto >= 0)
+	if(this != NULL && idProducto >= 0 )
 	{
 		this->idProducto=idProducto;
 		retorno = 0;

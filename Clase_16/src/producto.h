@@ -25,27 +25,21 @@ int pro_delete(Producto* this);
 
 int pro_setId(Producto* this,int idProducto);
 int pro_getId(Producto* this,int* flagError);
+
 int pro_setDescripcion(Producto* this,char* descripcion);
 char* pro_getDescripcion(Producto* this,int* flagError);
+
 int pro_setIdNacionalidad(Producto* this,int idNacionalidad);
 int pro_getIdNacionalidad(Producto* this,int* flagError);
+
 int pro_setIdTipo(Producto* this,int idTipo);
 int pro_getIdTipo(Producto* this,int* flagError);
 
 
+
+
+
 /*
-int cli_setNombre(Producto* this,char* nombre);
-char* cli_getNombre(Producto* this,int* flagError);
-
-int cli_setApellido(Producto* this,char* apellido);
-char* cli_getApellido(Producto* this,int* flagError);
-
-int cli_setDni(Producto* this,char* dni);
-char* cli_getDni(Producto* this,int* flagError);
-
-
-
-
 int cli_inicializarLibre(Producto* array,int len);
 int cli_BuscarLibre(Producto* array,int len,int* indice);
 Producto* cli_alta(Producto* array,int len);
